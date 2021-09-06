@@ -1,0 +1,61 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.App { 
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;  
+}
+
+.calculator {
+
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: max-content;
+  border-radius: 10px;
+
+  &__display {
+
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    
+  }
+
+  &__buttons { //container for all button
+    background-color: aqua;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    max-width: 22rem;//use the widths container to control the layout of the flex wrap button
+  }
+
+  &__button {
+    background-color: rgb(226, 226, 226);
+    width: 5rem;
+    height: 4.5rem;
+    margin: .4rem .25rem;
+    border-radius: 6px;
+    
+
+    &--lg {
+      width: 10.5rem;
+    }
+  }
+}
