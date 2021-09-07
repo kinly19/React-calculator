@@ -4,20 +4,45 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="calculator">
+
+        {/* <form className="calculator__display">
+          <input className="calculator__input"
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </form> */}
+        <div className="calculator__display">
+          <div className="calculator__input">
+            <h2>{input}</h2>
+            {/* <h2>{(input === '') ? 0 : input}</h2> */}
+          </div>
+        </div>
+
+        <div className="calculator__buttons">
+
+          <button className="calculator__button calculator__button--lg" onClick={handleClear}>Clear</button>
+          <button className="calculator__button" onClick={handleBackSpace}>C</button>
+          <button className="calculator__button" onClick={handleOnClick}>/</button>
+          <button className="calculator__button" onClick={handleOnClick}>7</button>
+          <button className="calculator__button" onClick={handleOnClick}>8</button>
+          <button className="calculator__button" onClick={handleOnClick}>9</button>
+          <button className="calculator__button" onClick={handleOnClick}>X</button>
+          <button className="calculator__button" onClick={handleOnClick}>4</button>
+          <button className="calculator__button" onClick={handleOnClick}>5</button>
+          <button className="calculator__button" onClick={handleOnClick}>6</button>
+          <button className="calculator__button" onClick={handleOnClick}>-</button>
+          <button className="calculator__button" onClick={handleOnClick}>1</button>
+          <button className="calculator__button" onClick={handleOnClick}>2</button>
+          <button className="calculator__button" onClick={handleOnClick}>3</button>
+          <button className="calculator__button" onClick={handleOnClick}>+</button>
+          <span className="calculator__button"></span>
+          <button className="calculator__button" onClick={handleOnClick}>0</button>
+          <button className="calculator__button" onClick={handleOnClick}>.</button>
+          <button className="calculator__button" onClick={handleEquation}>=</button>
+        </div>
+      </div>
     </div>
   );
 }
