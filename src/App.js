@@ -52,6 +52,28 @@ function App() {
     // (typeof (input) !== "string") ? setInput(0) : (input > 1) ? setInput(input.slice('', input.length - 1)) : setInput(0)
 
   }
+
+  const handleEquation = () => {
+
+    //we want to handle, if the user did something like 1+ = to return nothing
+
+    //if the inputs length to start with is greater than 1 (undefined at start 0 and string "0")&& the inputs last value includes an ops - const ops = ['.', '+', '-', '*', 'X', '/'] 
+    if (input.length > 0 && ops.includes(input.slice(-1))) { // && both need to be true
+      alert("You  broke it");
+      return
+
+    } else {
+
+      function parse(str) {
+        return Function(`'use strict'; return(${str})`)()
+      }
+
+      setInput(parseFloat(parse(input)))//we take the function above to turn our string into a value
+      console.log('parsed input is ' + parse(input))
+    }
+
+  }
+
   return (
     <div className="App">
       <div className="calculator">
