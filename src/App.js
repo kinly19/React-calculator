@@ -10,6 +10,30 @@ function App() {
   // console.log('Input is ' + input)
   // console.log("input length is " + input.length)
 
+  const handleOnClick = (e) => {
+
+    let parsedInput = String(input); //our handleEquation() function will return an integer value, so we need to turn it back into a string otherwise logic below will error on .slice() method
+
+    if ((ops.includes(e.target.innerText) && input === 0) || (ops.includes(e.target.innerText) && ops.includes(parsedInput.slice(-1)))) {
+
+      console.log("already have this ops")
+      return //return nothing
+
+    } else {
+
+      if (input === 0) {
+        setInput(e.target.innerText)
+
+      } else if ((input.slice() === '0' && e.target.innerText === '0') || (input.slice() === '.' && e.target.innerText === '.')) {
+        return
+      } else {
+
+        setInput(input + e.target.innerText.replaceAll('X', '*'))
+      }
+
+    }
+
+  }
   return (
     <div className="App">
       <div className="calculator">
