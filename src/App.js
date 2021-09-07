@@ -1,5 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './App.scss';
+
+
 
 function App() {
 
@@ -7,8 +9,11 @@ function App() {
   const [input, setInput] = useState(0);
   const ops = ['.', '+', '-', '*', 'X', '/'] // used this to check if the input already has any of these values
 
-  // console.log('Input is ' + input)
-  // console.log("input length is " + input.length)
+  // const [newInput, setNewInput] = ("")
+  // const [isZeroSelected, setIsZeroSelected] = useState(false)
+
+  console.log('Input is ' + input)
+  console.log("input length is " + input.length)
 
   const handleOnClick = (e) => {
 
