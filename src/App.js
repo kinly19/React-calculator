@@ -34,6 +34,24 @@ function App() {
     }
 
   }
+
+  const handleClear = () => {
+    setInput(0);
+  }
+
+  const handleBackSpace = () => {
+
+    if ((typeof (input) !== "string") || input.length <= 1) { //if its not a type of string after equation when clicking C button it will revert everything back to 0 instead of trying to backspace with slice
+      setInput(0)
+      console.log("a")
+    } else {
+      setInput(input.slice('', input.length - 1));
+      console.log("b")
+    }
+
+    // (typeof (input) !== "string") ? setInput(0) : (input > 1) ? setInput(input.slice('', input.length - 1)) : setInput(0)
+
+  }
   return (
     <div className="App">
       <div className="calculator">
