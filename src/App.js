@@ -2,6 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  //state to display value
+  const [input, setInput] = useState(0);
+  const ops = ['.', '+', '-', '*', 'X', '/'] // used this to check if the input already has any of these values
+
+  // console.log('Input is ' + input)
+  // console.log("input length is " + input.length)
+
   return (
     <div className="App">
       <div className="calculator">
