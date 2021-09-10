@@ -110,8 +110,7 @@ function App() {
             <h3>{prevInput}</h3>
           </div>
           <div className="calculator__input">
-            <h2>{input}</h2>
-            {/* <h2>{(input === '') ? 0 : input}</h2> */}
+            <h2>{(input === '') ? 0 : input}</h2>
           </div>
         </div>
 
