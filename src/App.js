@@ -34,6 +34,10 @@ function App() {
 
       }
 
+  const handleOperator = (e) => {
+
+    setPrevInput(parse(prevInput + input) + e.target.innerText); //instead of showing the concat value of prevInput eg(10+10+10+10+10) we show the calculated value (50 +)
+    setInput('');
     }
   }
 
