@@ -5,38 +5,30 @@ import './App.scss';
 
 function App() {
   //state to display value
-  const [input, setInput] = useState(0);
+  const [input, setInput] = useState('');
   const [prevInput, setPrevInput] = useState('')
-  const [calcValu, setCalcValu] = useState('')
   const ops = ['.', '+', '-', '*', 'X', '/'] // used this to check if the input already has any of these values
-  // console.log(input)
-  // console.log(input.length)
-  // console.log(calcValu + " calc value ")
+
 
   const handleOnClick = (e) => {
 
-    let parsedInput = String(input); //our handleEquation() function will return an integer value, so we need to turn it back into a string otherwise logic below will error on .slice() method
+    // let parsedInput = String(input); //our handleEquation() function will return an integer value, so we need to turn it back into a string otherwise logic below will error on .slice() method
 
-    if ((ops.includes(e.target.innerText) && input === 0) || (ops.includes(e.target.innerText) && ops.includes(parsedInput.slice(-1)))) {
-
-      console.log("already have this ops")
+    if ((ops.includes(e.target.innerText) && input === '') || (ops.includes(e.target.innerText) && ops.includes(String(input).slice(-1)))) { //stop us from adding multiply if there is no input 
+      console.log('A')
       return //return nothing
 
-    } else {
-
-      if (ops.slice(1).includes(e.target.innerText)) {
-
-        // setPrevInput(input + e.target.innerText.replaceAll('X', '*'))
-        setPrevInput(prevInput + input + e.target.innerText.replaceAll('X', '*'))
-        setInput(0)
-
-      } else {
-
-        if (input === 0) {
+    } else if (ops.slice(1).includes(e.target.innerText)) {
+      handleOperator(e)
+      console.log('B')
+    } else if (input === '' || typeof (input) !== 'string') {
           setInput(e.target.innerText)
-        } else if ((parsedInput.slice() === '0' && e.target.innerText === '0') || (parsedInput.includes('.') && e.target.innerText === '.')) {
+      console.log('C')
+    } else if ((input === '0' && e.target.innerText === '0') || (input.includes('.') && e.target.innerText === '.')) {
+      console.log('D')
           return
         } else {
+      console.log('F')
           setInput(input + e.target.innerText.replaceAll('X', '*'))
         }
 
