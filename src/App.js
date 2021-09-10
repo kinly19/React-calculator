@@ -1,19 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss';
 
 
 
 function App() {
-
   //state to display value
   const [input, setInput] = useState(0);
+  const [prevInput, setPrevInput] = useState('')
+  const [calcValu, setCalcValu] = useState('')
   const ops = ['.', '+', '-', '*', 'X', '/'] // used this to check if the input already has any of these values
-
-  // const [newInput, setNewInput] = ("")
-  // const [isZeroSelected, setIsZeroSelected] = useState(false)
-
-  console.log('Input is ' + input)
-  console.log("input length is " + input.length)
+  // console.log(input)
+  // console.log(input.length)
+  // console.log(calcValu + " calc value ")
 
   const handleOnClick = (e) => {
 
@@ -26,22 +24,39 @@ function App() {
 
     } else {
 
-      if (input === 0) {
-        setInput(e.target.innerText)
+      if (ops.slice(1).includes(e.target.innerText)) {
 
-      } else if ((input.slice() === '0' && e.target.innerText === '0') || (input.slice() === '.' && e.target.innerText === '.')) {
-        return
+        // setPrevInput(input + e.target.innerText.replaceAll('X', '*'))
+        setPrevInput(prevInput + input + e.target.innerText.replaceAll('X', '*'))
+        setInput(0)
+
       } else {
 
-        setInput(input + e.target.innerText.replaceAll('X', '*'))
+        if (input === 0) {
+          setInput(e.target.innerText)
+        } else if ((parsedInput.slice() === '0' && e.target.innerText === '0') || (parsedInput.includes('.') && e.target.innerText === '.')) {
+          return
+        } else {
+          setInput(input + e.target.innerText.replaceAll('X', '*'))
+        }
+
       }
 
     }
-
   }
+
+  // const handleOperator = (e) => {
+  //   if (ops.slice(1).includes(e.target.innerText)) {
+  //     setPrevInput(input + e.target.innerText.replaceAll('X', '*'))
+  //     // setInput(input + e.target.innerText.replaceAll('X', '*'))
+  //     setInput(0)
+  //   }
+  // }
 
   const handleClear = () => {
     setInput(0);
+    setPrevInput('')
+    setCalcValu('')
   }
 
   const handleBackSpace = () => {
@@ -58,7 +73,11 @@ function App() {
 
   }
 
-  const handleEquation = () => {
+  function parse(str) {
+    return Function(`'use strict'; return(${str})`)()
+  }
+
+  const handleEquation = (e) => {
 
     //we want to handle, if the user did something like 1+ = to return nothing
 
@@ -67,14 +86,14 @@ function App() {
       alert("You  broke it");
       return
 
+    } else if (input.length === undefined) {
+      return
     } else {
 
-      function parse(str) {
-        return Function(`'use strict'; return(${str})`)()
-      }
-
-      setInput(parseFloat(parse(input)))//we take the function above to turn our string into a value
-      console.log('parsed input is ' + parse(input))
+      // setPrevInput(prevInput + input + e.target.innerText)
+      setPrevInput('')
+      setInput(parseFloat(parse(prevInput + input)))//we take the function above to turn our string into a value
+      setCalcValu(parseFloat(input))
     }
 
   }
@@ -91,6 +110,9 @@ function App() {
           />
         </form> */}
         <div className="calculator__display">
+          <div className="calculator__prevInput">
+            <h3>{prevInput}</h3>
+          </div>
           <div className="calculator__input">
             <h2>{input}</h2>
             {/* <h2>{(input === '') ? 0 : input}</h2> */}
