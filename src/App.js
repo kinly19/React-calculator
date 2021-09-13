@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.scss';
 
 function App() {
@@ -12,14 +12,14 @@ function App() {
 
     // let parsedInput = String(input); //our handleEquation() function will return an integer value, so we need to turn it back into a string otherwise logic below will error on .slice() method
 
-    if ((ops.includes(e.target.innerText) && input === '') || (ops.includes(e.target.innerText) && ops.includes(String(input).slice(-1)))) { //stop us from adding multiply if there is no input 
+    if ((ops.includes(e.target.innerText) && input === '') || (ops.includes(e.target.innerText) && ops.includes(String(input).slice(-1)))) { //stop us from adding multiple if there is no input 
       console.log('A')
       return //return nothing
 
-    } else if (ops.slice(1).includes(e.target.innerText)) {
+    } else if (ops.slice(1).includes(e.target.innerText)) { //if any of the clicked buttons is an Operator (minus '.' with ops.slice(1)) run function 
       handleOperator(e)
       console.log('B')
-    } else if (input === '' || typeof (input) !== 'string') {
+    } else if (input === '' || typeof (input) !== 'string') { // if the input is an empty string or after calculator evaluates and returns a value(stops user from adding onto a calculated value)
       setInput(e.target.innerText)
       console.log('C')
     } else if ((input === '0' && e.target.innerText === '0') || (input.includes('.') && e.target.innerText === '.')) {
