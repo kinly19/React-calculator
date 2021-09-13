@@ -61,19 +61,13 @@ function App() {
     return Function(`'use strict'; return(${str})`)()
   }
 
-  const handleEquation = (e) => {
+  const handleEquation = () => {
 
-    //if the inputs length to start with is greater than 1 (undefined at start 0 and string "0")&& the inputs last value includes an ops - const ops = ['.', '+', '-', '*', 'X', '/'] 
-    if (input.length > 0 && ops.includes(input.slice(-1))) { // && both need to be true
-      alert("You broke it");
-      return
-
-    } else if (input.length === undefined) {
+    if ((input === '' && ops.includes(prevInput.slice(-1))) || (input === '' && prevInput === '')) {
       return
     } else {
-
-      setPrevInput('')
       setInput(parseFloat(parse(prevInput + input)))//we take the function above to turn our string into a value
+      setPrevInput('')
     }
 
   }
